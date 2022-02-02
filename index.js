@@ -1,6 +1,7 @@
 const from = document.querySelector('#form');
 
-const formValidation = () => {
+const formValidation = (e) => {
+	e.preventDefault();
 	console.log(e.target);
 };
 

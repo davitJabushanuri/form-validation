@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&family=Roboto:ital@1&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+:root {
+	--color-primary: #101727;
+	--color-secondary: #474950;
+	--bg-color: #ffffff;
 }
 
 body {
@@ -9,7 +17,78 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: 'Poppins', sans-serif;
+}
+
+main {
+	background-color: var(--bg-color);
+	width: 400px;
+}
+
+h1 {
+	margin-bottom: 2rem;
+	color: var(--color-primary);
+	letter-spacing: 1.4px;
+}
+
+label,
+span {
+	display: block;
+	height: 20px;
+	margin-bottom: 5px;
+}
+
+label {
+	font-weight: 600;
+	color: var(--color-secondary);
+	font-size: 14px;
+}
+span {
+	color: red;
+}
+
+input,
+.google-signin a {
+	height: 45px;
+	width: 400px;
+	border-radius: 7px;
+	border: 2px solid #e9ebee;
 	font-size: 16px;
+	padding: 0 10px;
+	box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px;
+}
+
+input[type='submit'] {
+	background-color: var(--color-primary);
+	color: #f5f3f3;
+	font-weight: 500;
+	font-size: 18px;
+	margin-bottom: 1rem;
+	border: none;
+}
+
+.google-signin a {
+	display: block;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-secondary);
+	font-weight: 600;
+	margin-bottom: 1.5rem;
+}
+
+.signup {
+	font-size: 14px;
+	text-align: center;
+}
+
+.signup p {
+	color: var(--color-secondary);
+}
+
+.signup a {
+	text-decoration: none;
+	color: var(--color-primary);
+	font-weight: 600;
 }
