@@ -25,10 +25,11 @@ main {
 	width: 400px;
 }
 
-h1 {
-	margin-bottom: 2rem;
+p {
+	margin-bottom: 1rem;
 	color: var(--color-primary);
-	letter-spacing: 1.4px;
+	font-size: 18px;
+	font-weight: 600;
 }
 
 label,
@@ -41,10 +42,12 @@ span {
 label {
 	font-weight: 600;
 	color: var(--color-secondary);
-	font-size: 14px;
+	font-size: 16px;
 }
 span {
+	display: block;
 	color: red;
+	font-size: 14px;
 }
 
 input,
@@ -52,9 +55,16 @@ input,
 	height: 45px;
 	width: 400px;
 	border-radius: 7px;
-	border: 2px solid #e9ebee;
+	border: 2px solid #cad1d6;
 	font-size: 16px;
 	padding: 0 10px;
+	box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px;
+}
+
+input:active,
+input:focus {
+	outline: none;
+	border: 2px solid rgba(27, 31, 35, 1);
 	box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px;
 }
 
@@ -91,4 +101,14 @@ input[type='submit'] {
 	text-decoration: none;
 	color: var(--color-primary);
 	font-weight: 600;
+	font-size: 16px;
+}
+
+.google {
+	margin-right: 10px;
+	font-size: 1.4rem;
+}
+
+.error {
+	border: 2px solid red;
 }
