@@ -16,6 +16,7 @@ const passwordConfirmationError = document.querySelector(
 );
 
 let isValidCountry;
+let passwordsMatch;
 
 const countryList = [
 	'Afghanistan',
@@ -317,10 +318,43 @@ const validateZipCode = () => {
 	}
 };
 
-const validatePassword = () => {};
+const passwordRegex = () => {
+	const re =
+		/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,})$/;
+	return re.test(password.value);
+};
+
+const validatePassword = () => {
+	console.log(passwordRegex());
+	if (!passwordRegex()) {
+		passwordError.innerText = `Password must be at least 8 characters long. One lowercase, one uppercase, one number and one special character`;
+		password.classList.add('error');
+	} else {
+		passwordError.innerText = ``;
+		password.classList.remove('error');
+	}
+};
+
+const validatePasswordConfirmation = () => {
+	if (password.value !== passwordConfirmation.value) {
+		passwordConfirmationError.innerText = `Passwords don't match`;
+		passwordConfirmation.classList.add('error');
+		passwordsMatch = false;
+	} else {
+		passwordConfirmationError.innerText = ``;
+		passwordConfirmation.classList.remove('error');
+		passwordsMatch = true;
+	}
+};
 
 const formValidation = (e) => {
-	if (!emailRegex() || !isValidCountry || !zipCodeRegex()) {
+	if (
+		!emailRegex() ||
+		!isValidCountry ||
+		!zipCodeRegex() ||
+		!passwordRegex() ||
+		!passwordsMatch
+	) {
 		e.preventDefault();
 		alert('please fill out the form correctly');
 	}
@@ -330,5 +364,6 @@ email.addEventListener('keyup', validateEmail);
 country.addEventListener('keyup', validateCountry);
 zipCode.addEventListener('keyup', validateZipCode);
 password.addEventListener('keyup', validatePassword);
+passwordConfirmation.addEventListener('keyup', validatePasswordConfirmation);
 
 form.addEventListener('submit', formValidation);
