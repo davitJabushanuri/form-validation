@@ -95,11 +95,12 @@ input[type='submit'] {
 
 .signup p {
 	color: var(--color-secondary);
+	font-size: 14px;
 }
 
 .signup a {
 	text-decoration: none;
-	color: var(--color-primary);
+	color: rgb(19, 19, 185);
 	font-weight: 600;
 	font-size: 16px;
 }
@@ -111,4 +112,8 @@ input[type='submit'] {
 
 .error {
 	border: 2px solid red;
+}
+
+.success {
+	border: 2px solid green;
 }
