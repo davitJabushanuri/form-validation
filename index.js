@@ -15,6 +15,8 @@ const passwordConfirmationError = document.querySelector(
 	'#password-confirmation-error'
 );
 
+let isValidCountry;
+
 const countryList = [
 	'Afghanistan',
 	'Albania',
@@ -281,7 +283,9 @@ const validateEmail = () => {
 
 const validateCountry = () => {
 	const properCase = (country) => {
-		return `${country[0].toUpperCase()}${country.slice(1).toLowerCase()}`;
+		if (country) {
+			return `${country[0].toUpperCase()}${country.slice(1).toLowerCase()}`;
+		}
 	};
 
 	const countryProperCase = properCase(country.value);
@@ -289,20 +293,42 @@ const validateCountry = () => {
 	if (!countryList.includes(countryProperCase)) {
 		countryError.innerText = `Please enter a valid Country`;
 		country.classList.add('error');
+		isValidCountry = false;
 	} else {
 		countryError.innerText = ``;
 		country.classList.remove('error');
+		isValidCountry = true;
 	}
 };
 
+const zipCodeRegex = () => {
+	const re = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
+
+	return re.test(zipCode.value);
+};
+
+const validateZipCode = () => {
+	if (!zipCodeRegex()) {
+		zipCodeError.innerText = `Please enter a valid zip code`;
+		zipCode.classList.add('error');
+	} else {
+		zipCodeError.innerText = ``;
+		zipCode.classList.remove('error');
+	}
+};
+
+const validatePassword = () => {};
+
 const formValidation = (e) => {
-	if (!emailRegex()) {
+	if (!emailRegex() || !isValidCountry || !zipCodeRegex()) {
 		e.preventDefault();
 		alert('please fill out the form correctly');
 	}
 };
 
-email.addEventListener('mouseleave', validateEmail);
-country.addEventListener('mouseleave', validateCountry);
+email.addEventListener('keyup', validateEmail);
+country.addEventListener('keyup', validateCountry);
+zipCode.addEventListener('keyup', validateZipCode);
+password.addEventListener('keyup', validatePassword);
 
 form.addEventListener('submit', formValidation);
